@@ -29,9 +29,10 @@ public class ServerNormal {
             //如果端口合法且空闲，服务端就监听成功
             server = new ServerSocket(port);
             System.out.println("服务器已启动，端口号：" + port);
-            //通过无线循环监听客户端连接
+            //通过无限循环监听客户端连接
             //如果没有客户端接入，将阻塞在accept操作上。
             while (true) {
+                //这里会生成新的Socket，所以每个链路的Socket是不同实例的
                 Socket socket = server.accept();
                 //当有新的客户端接入时，会执行下面的代码
                 //然后创建一个新的线程处理这条Socket链路
